@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
 	<title>Students</title>
 
-	
+
 </head>
 
 <body>
@@ -74,18 +74,39 @@
 										<h2 class="modal-title fs-5" id="exampleModalLabel">Please Add New Student</h2>
 										<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 									</div>
-									<div class="modal-body">
-										<p>Modal body text goes here.</p>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-										<button type="button" class="btn btn-primary">Save changes</button>
+										<div class="modal-body">
+												<form action="" method="POST">
+
+													<div class="mb-3">
+														<label for="name" class="form-label">Full Name</label>
+														<input type="text" class="form-control" id="name"
+															placeholder="Enter Full Name">
+													</div>
+
+											<div class="mb-3">
+												<label for="email" class="form-label">Email Address</label>
+												<input type="email" class="form-control" id="email"
+													placeholder="Enter Email">
+											</div>
+
+											<div class="mb-3">
+												<label for="phone" class="form-label">Phone Number</label>
+												<input type="text" class="form-control" id="phone"
+													placeholder="Enter Phone Number">
+											</div>
+
+										</form>
+
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+											<button type="button" class="btn btn-primary">Save changes</button>
+										</div>
+
 									</div>
 								</div>
 							</div>
-						</div>
 
-						<!--  End of Enter New Student Modal  -->
+							<!--  End of Enter New Student Modal  -->
 
 					</tbody>
 				</table>
@@ -99,7 +120,7 @@
 		</div>
 	</div>
 
-	
+
 
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
 		integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
