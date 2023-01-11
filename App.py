@@ -1,5 +1,5 @@
-from flask import Flask, flash, render_template, request, url_for, flash
-from werkzeug.utils import redirect
+from flask import Flask, flash, render_template, request, url_for, redirect
+# from werkzeug.utils import redirect
 from flask_mysqldb import MySQL
 
 
