@@ -39,10 +39,22 @@ def insert():
 		phone = request.form['phone']
 
 		cur = mysql.connection.cursor()
-		cur.execute("Insert Into students (name, email, phone) Values (%s, %s, %s)", (name, email, phone))
+		cur.execute(
+		    "Insert Into students (name, email, phone) Values (%s, %s, %s)", (name, email, phone))
 		mysql.connection.commit()
 
 		return redirect(url_for('Index'))
+
+		# Methods Delete
+
+@app.route('/delete/<string:id_data>', methods=['GET'])
+def delete(id_data):
+    flash("Record Has Been Deleted Successfully")
+    cur = mysql.connection.cursor()
+    cur.execute("DELETE FROM students WHERE id=%s", (id_data,))
+    mysql.connection.commit()
+    return redirect(url_for('Index'))
+
 
 if __name__ == "__main__":
 	app.run(port=5555, debug=True)
