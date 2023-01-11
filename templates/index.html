@@ -10,7 +10,6 @@
 	<link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
 	<!-- <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}"> -->
 	<title>Students</title>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
 <body>
@@ -30,10 +29,8 @@
 				{% for message in messages %}
 
 				<div class="alert alert-success alert-dismissible fade show" role="alert">
+					<strong>{{message}}</strong>
 					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-					
-					{{message}}
-
 				</div>
 
 				{%endfor%}
@@ -58,8 +55,11 @@
 							<td>{{row.2}}</td>
 							<td>{{row.3}}</td>
 							<td>
-								<a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="" title="Edit."><i
-										class="bi bi-pencil-square"></i></a>
+
+
+								<a href="/update/{{row.0}}" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#myEditModal{{row.0}}" title="Edit."><i
+										class="bi bi-pencil-square"></i></a> 
+								
 								<a href="/delete/{{ row.0 }}" onclick="return confirm('Are Sure Want To Deleted ?')" title="Delete."
 									class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></a>
 								<!-- <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myDeleteModal"
@@ -90,7 +90,7 @@
 			</div>
 	</div> -->
 
-						{% endfor %}
+
 
 						<!--  Enter New Student Modal  -->
 
@@ -130,9 +130,57 @@
 									</div>
 								</div>
 							</div>
+						</div>
 
 							<!--  End of Enter New Student Modal  -->
 
+
+							<!--  Edit  Student Modal  -->
+
+							<div class="modal fade" id="myEditModal{{row.0}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h2 class="modal-title  text-warning fs-5" id="exampleModalLabel">Update Student Details.</h2>
+											<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+										</div>
+										<div class="modal-body">
+	
+											<form action="{{ url_for('update') }}" method="POST">
+												
+												<input type="hidden" name="id" value="{{  row.0 }}">
+	
+												<div class="mb-3">
+													<label for="name" class="form-label">Full Name</label>
+													<input value="{{row.1}}" type="text" name="name" class="form-control" id="name" placeholder="Enter Full Name">
+												</div>
+	
+												<div class="mb-3">
+													<label for="email" class="form-label">Email Address</label>
+													<input value="{{row.2}}" type="email" name="email" class="form-control" id="email" placeholder="Enter Email">
+												</div>
+	
+												<div class="mb-3">
+													<label for="phone" class="form-label">Phone Number</label>
+													<input  value="{{row.3}}"type="text" name="phone" class="form-control" id="phone"
+														placeholder="Enter Phone Number">
+												</div>
+	
+												<div class="modal-footer">
+													<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+													<button type="submit" class="btn btn-primary">Save changes</button>
+												</div>
+											
+	
+											</form> 
+											
+
+										</div>
+									</div>
+								</div>
+							</div>
+							<!--  Edit  Student Modal  -->
+							{% endfor %}
 					</tbody>
 				</table>
 
@@ -140,12 +188,13 @@
 
 			<!-- Content ends here -->
 			<div class="col-sm-2">
-
 			</div>
+
 		</div>
 	</div>
-
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+	
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
 	</script>
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"

@@ -45,7 +45,7 @@ def insert():
 
 		return redirect(url_for('Index'))
 
-		# Methods Delete
+	# Methods Delete
 
 @app.route('/delete/<string:id_data>', methods=['GET'])
 def delete(id_data):
@@ -54,6 +54,25 @@ def delete(id_data):
     cur.execute("DELETE FROM students WHERE id=%s", (id_data,))
     mysql.connection.commit()
     return redirect(url_for('Index'))
+
+
+
+	# Method Edit
+@app.route('/update', methods= ['POST', 'GET'])
+def update():
+						if request.method == 'POST':
+								id_data = request.form['id']
+								name = request.form['name']
+								email = request.form['email']
+								phone = request.form['phone']
+ 
+								cur =  mysql.connection.cursor()
+								cur.execute("""								
+									Update students Set name=%s, email=%s, phone=%s Where id=%s
+								""", (name, email,phone, id_data))
+								flash("Data Updated  Successfully!")
+
+								return redirect(url_for('Index'))
 
 
 if __name__ == "__main__":
