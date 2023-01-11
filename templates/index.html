@@ -64,9 +64,33 @@
 							<td>
 								<a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="" title="Edit."><i class="bi bi-pencil-square"></i></a>
 								<a href="/delete/{{ row.0 }}" onclick="return confirm('Are Sure Want To Deleted ?')" title="Delete." class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></a>
+								<!-- <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myDeleteModal"
+								 title="Delete"><i class="bi bi-trash"></i></button> -->
 
 							</td>
 						</tr>
+
+
+						<!-- modal Delete -->
+		<!-- <div class="modal fade" id="myDeleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h2 class="modal-title  text-danger fs-5" id="exampleModalLabel">Delete Confirmation..</h2>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+							<div class="modal-body">
+								Are you sure want to Delete "{{ row.1 }}"?
+							</div>
+							<div class="modal-footer">								
+									<button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+												>Close</button>
+												<a href="/delete/{{ row.0 }}" class="btn btn-danger">Confirmar</a>
+									
+							</div>
+					</div>
+			</div>
+	</div> -->
 
 						{% endfor %}
 
@@ -120,6 +144,9 @@
 
 			</div>
 		</div>
+
+		
+
 	</div>
 
 
